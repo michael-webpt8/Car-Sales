@@ -7,13 +7,13 @@ import Total from './components/Total';
 import { addFeature } from './actions/cars';
 
 const App = (props) => {
-	const removeFeature = (item) => {
-		// dispatch an action here to remove an item
-	};
+	// const removeFeature = () => {
+	// 	// dispatch an action here to remove an item
+	// };
 
-	const buyItem = (item) => {
+	const buyItem = () => {
 		// dispatch an action here to add an item
-		props.addFeature(item);
+		// props.addFeature(item);
 	};
 
 	return (
@@ -23,7 +23,7 @@ const App = (props) => {
 				<AddedFeatures /*car={state.car} */ />
 			</div>
 			<div className="box">
-				<AdditionalFeatures />
+				<AdditionalFeatures buyItem={buyItem} />
 				<Total /*car={state.car} additionalPrice={state.additionalPrice}*/ />
 			</div>
 		</div>
