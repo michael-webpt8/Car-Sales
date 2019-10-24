@@ -25,7 +25,10 @@ export function reducer(state = initialState, action) {
 				car: {
 					...state.car,
 					features: [...state.car.features, action.payload]
-				}
+				}, additionalFeatures: [
+					...state.additionalFeatures,
+					action.payload
+				]
 			};
 		case REMOVE_EXTRA_FEATURE:
 			return {
@@ -34,7 +37,7 @@ export function reducer(state = initialState, action) {
           ...state.car,
           features: [
             state.car.feature.filter( (feature) => feature.id !== action.payload) 
-          ]
+		  ],
          
 
           )
