@@ -6,35 +6,38 @@ import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 import { addFeature } from './actions/cars';
 
-const App = (props) => {
-	// const removeFeature = () => {
-	// 	// dispatch an action here to remove an item
-	// };
+const App = props => {
+  // const removeFeature = () => {
+  // 	// dispatch an action here to remove an item
+  // };
 
-	const buyItem = () => {
-		// dispatch an action here to add an item
-		// props.addFeature(item);
-	};
+  const buyItem = (item) => {
+    // dispatch an action here to add an item
+	// props.addFeature(item);
+	props.addFeature(item);
+  };
 
-	return (
-		<div className="boxes">
-			<div className="box">
-				<Header />
-				<AddedFeatures /*car={state.car} */ />
-			</div>
-			<div className="box">
-				<AdditionalFeatures buyItem={buyItem} />
-				<Total /*car={state.car} additionalPrice={state.additionalPrice}*/ />
-			</div>
-		</div>
-	);
+  return (
+    <div className='boxes'>
+      <div className='box'>
+        <Header />
+        <AddedFeatures /*car={state.car} */ />
+      </div>
+      <div className='box'>
+		<AdditionalFeatures 
+		buyItem={props.buyItem}
+		/>
+        <Total /*car={state.car} additionalPrice={state.additionalPrice}*/ />
+      </div>
+    </div>
+  );
 };
 
 const mapDispatchToProps = {
-	addFeature
+  addFeature
 };
 
 export default connect(
-	null,
-	mapDispatchToProps
+  null,
+  mapDispatchToProps
 )(App);
