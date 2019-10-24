@@ -18,6 +18,8 @@ const initialState = {
 };
 
 export function reducer(state = initialState, action) {
+  const subtract = (reductor, currentVal) => reductor - currentVal;
+
   switch (action.type) {
     case ADD_EXTRA_FEATURE:
       console.log('ADD', action);
@@ -38,9 +40,15 @@ export function reducer(state = initialState, action) {
         car: {
           ...state.car,
           features: [
-            state.car.feature.filter(feature => feature.id !== action.payload)
+            state.car.features.filter(
+              feature => feature.id !== action.payload.id
+            )
           ]
-        }
+        },
+        additionalFeatures: [
+          ...state.additionalFeatures,
+          state.price.subtract(state.car.price, state.additionalFeatures.price)
+        ]
       };
 
     default:

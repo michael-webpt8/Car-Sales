@@ -8,7 +8,7 @@ export function addFeature(feature) {
   };
 }
 
-export function removeFeature(feature) {
+export function removeExtraFeature(feature) {
   return {
     type: REMOVE_EXTRA_FEATURE,
     payload: feature

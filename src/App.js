@@ -4,12 +4,13 @@ import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
-import { addFeature } from './actions/cars';
+import { addFeature, removeExtraFeature } from './actions/cars';
 
 const App = props => {
-  // const removeFeature = () => {
-  // 	// dispatch an action here to remove an item
-  // };
+  const removeFeature = item => {
+    // dispatch an action here to remove an item
+    props.removeExtraFeature(item);
+  };
 
   const buyItem = item => {
     // dispatch an action here to add an item
@@ -21,7 +22,7 @@ const App = props => {
     <div className='boxes'>
       <div className='box'>
         <Header />
-        <AddedFeatures /*car={state.car} */ />
+        <AddedFeatures /*car={state.car} */ removeFeature={removeFeature} />
       </div>
       <div className='box'>
         <AdditionalFeatures buyItem={buyItem} />
@@ -32,7 +33,8 @@ const App = props => {
 };
 
 const mapDispatchToProps = {
-  addFeature
+  addFeature,
+  removeExtraFeature
 };
 
 export default connect(
